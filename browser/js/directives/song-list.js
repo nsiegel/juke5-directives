@@ -1,14 +1,23 @@
-app.directive('songList', function() {
+app.directive('songList', function(PlayerFactory) {
   return {
     restrict: 'E',
     templateUrl: '/templates/song-list.html',
     scope: {
-      songs: '=',
-      show: '='
+      songs: '='
     },
     link: function(scope, element, attr){
       scope.show = attr.show;
-      console.log(scope.show)
+
+      scope.isCurrent = function (song) {
+    		var current = PlayerFactory.getCurrentSong();
+    		return current && current._id == song._id;
+    	};
+
+    	scope.start = function (song) {
+    		PlayerFactory.start(song, $scope.playlist.songs);
+    	};
+
+
     }
   };
 });
