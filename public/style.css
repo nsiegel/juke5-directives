@@ -45,4 +45,13 @@ footer {
     transition: none !important; }
 
 .album img {
-  height: 300px; }
+  height: 300px;
+}
+
+[double-click] {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer; }
+
+tr[double-click]:hover {
+  background-color: #444; }
